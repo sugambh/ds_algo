@@ -31,3 +31,25 @@ class LinkedList:
             else:
                 print(str(current.data) + "->", end='')
             current = current.next
+
+    def delete(self,data):
+        if self.head is not None:
+            if self.head.data == data:
+                self.head = self.head.next
+            else:
+                previous = None
+                current = self.head
+                while current is not None and current.data!=data and current.next is not None:
+                    previous = current
+                    current = current.next
+                if current.data == data and current.next is None:
+                    previous.next=None
+                elif current.data == data and current.next is not None:
+                    previous.next = current.next
+                    current.next=None
+                else:
+                    print ("no such node found")
+
+
+        else:
+            print ("empty list")
